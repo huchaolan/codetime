@@ -12,3 +12,5 @@
 * HTTP协议:https://github.com/huchaolan/helloword.git
 * Git协议:git://github.com/huchaolan/helloword.git
 * SSH协议:ssh://github.com/huchaolan/helloword.git
+
+使用GitDestop changeit
