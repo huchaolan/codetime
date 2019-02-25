@@ -15,7 +15,7 @@ Docer理解为轻量级虚拟机，但是不完全是。它比虚拟机少了虚
 
 ## Docker架构
 
-![Docker架构](./imgs/docker2.PNG)
+![Docker架构](./imgs/docker2.PNG)  
 Docker daemon是核心，可以下载，运行Docker的各种镜像。
 
 ## docker加速器
@@ -25,10 +25,10 @@ Docker daemon是核心，可以下载，运行Docker的各种镜像。
 
 ## Docker下载镜像
 
-`docker pull imagename`拉取镜像文件，一般镜像都在外网所以先要配置docker加速器
-`docker pull ubuntu`拉取ubuntu
-`docker images`展示本地的镜像
-`docker run -p 8080:80 -d nginx` 运行nginx
-p参数将容器的80端口映射到本地的8080端口
-d参数运行程序直接返回
-`docker ps`显示正在跑的容器
+`docker pull imagename`拉取镜像文件，一般镜像都在外网所以先要配置docker加速器  
+`docker pull ubuntu`拉取ubuntu  
+`docker images`展示本地的镜像  
+`docker run -p 8080:80 -d nginx` 运行nginx  
+p参数将容器的80端口映射到本地的8080端口  
+d参数运行程序直接返回  
+`docker ps`显示正在跑的容器  
