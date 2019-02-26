@@ -23,7 +23,7 @@ Docker daemon是核心，可以下载，运行Docker的各种镜像。
 + windows配置
 在docker图标点击settings，在Daemon选项卡，Registry mirrors填入`http://f1361db2.m.daocloud.io`
 
-## Docker下载镜像
+## Docker简单命令解释
 
 `docker pull imagename`拉取镜像文件，一般镜像都在外网所以先要配置docker加速器  
 `docker pull ubuntu`拉取ubuntu容器  
@@ -32,4 +32,23 @@ Docker daemon是核心，可以下载，运行Docker的各种镜像。
 p参数将容器的80端口映射到本地的8080端口  
 d参数运行守护进程，命令执行完成后就返回  
 `docker ps`显示正在跑的容器  
-`docker cp index.html 486bb876ec07://usr/share/nginx/html`
+`docker cp index.html d1fa7964b2c2://usr/share/nginx/html` 将index.html拷贝到docker容器中，再次访问了nginx页面就显示index.html,这些改动在没有保存的情况是一次性的。  
+`docker commit -m 'fun' d1fa7964b2c2 nginx-fun` 将改动保存为新的镜像  
+`docker rmi 46e964661343` 删除镜像  
+`docker rm df5d26e798a4` 删除容器，删除镜像前要停容器和删除容器  
+
+## dockerfile构建镜像
+
+1. 创建一个Docerfile的文件，内容如下：
+
+```bash
+FORM alpine:latest
+MAINTAINER hc
+CMD echo 'hello docker'
+```
+
+FORM表示镜像来自alpine的最新版本，alpine是专门为docker做的极小的linux镜像
+MAINTAINER是维护者名字
+CMD
+
+2. 执行命令`docker build -t hello_docker .` 将当前目录文件都打入新的镜像中
