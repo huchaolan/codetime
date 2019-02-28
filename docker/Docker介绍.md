@@ -106,4 +106,4 @@ CMD echo 'hello docker' 3df065bfdff6
 
 ## volume介绍
 
-提供独立于容器之外的持久化存储
+提供独立于容器之外的持久化存储。
