@@ -73,7 +73,7 @@ EXPOSE 80
 `ENTRYPOINT ["/usr/sbin/nginx","-g","daemon off;"]` 执行命令的参数
 `EXPOSE 80` 暴露80端口
 
-这里由点问题，下载ubuntu太慢，需要缓存国内镜像
+这里有点问题，下载ubuntu太慢，需要缓存国内镜像
 
 ``` bash
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
@@ -106,4 +106,34 @@ CMD echo 'hello docker' 3df065bfdff6
 
 ## volume介绍
 
-提供独立于容器之外的持久化存储。
+提供独立于容器之外的持久化存储。方式有三种:
+
+1. 使用虚拟层来建立volume的映射
+`docker run -d --name nginx -v /usr/share/nginx/html nginx`
+v参数指定的地址是容器内部地址，它实际是虚拟层某一个地址。
+在虚拟层种修改文件后，容器对应目录也会一样的修改
+`docker inspect nginx` 会输出容器中的所有信息，其中注意Mounts段落
+
+``` json
+"Mounts": [
+    {
+        "Type": "volume",
+        "Name": "6bd121e5346f8d06566c398dd5bb8a0b5de11d98128828163b22396ef1237f3d",
+        "Source": "/var/lib/docker/volumes/6bd121e5346f8d06566c398dd5bb8a0b5de11d98128828163b22396ef1237f3d/_data",
+        "Destination": "/usr/share/nginx/html",
+        "Driver": "local",
+        "Mode": "",
+        "RW": true,
+        "Propagation": ""
+    }
+],
+```
+
+Source是宿主机的地址，Destination是容器内部地址，它们是映射的关系
+Source如果linux可以直接访问，windows和mac是添加虚拟层方式实现的，Docker使用虚拟层地址映射进来的
+所以我们要向访问这个地址，需要进入虚拟层才可以
+
+2. 使用本地路径映射容器的内部路径
+`docker run -d --name nginx -v /c/Users/systemDir:/usr/share/nginx/html nginx`
+
+3. 使用别的容器路径作为路径
