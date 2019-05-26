@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个vuedemo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <style>
+        .red {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <div>
+            <input type="text" v-model="info" />
+            <button @click="handleClick">添加</button>
+            <ul>
+                <!--<li v-for="item in list">{{item}}</li>-->
+                <tolist v-for="item in list" :item="item"></tolist>
+            </ul>
+        </div>
+    </div>
+    <script>
+        Vue.component("tolist",{
+            props:['item'],
+            template:"<li class='red'>{{item}}</li>"
+        });
+        new Vue({
+            el:'#app',
+            data() {
+                return {
+                    msg:'hello vue',
+                    info:'',
+                    list:[]
+                }
+            },
+            methods: {
+                handleClick() {
+                    this.list.push(this.info);
+                    this.info='';
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

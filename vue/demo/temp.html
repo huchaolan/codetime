@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>第一个vuedemo</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <div>
+            <input type="text" v-model="info" />
+            <button @click="handleClick">添加</button>
+            <ul>
+                <li>1.</li>
+            </ul>
+        <div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data() {
+                return {
+                    msg:'hello vue',
+                    info:'',
+                }
+            },
+            methods: {
+                handleClick() {
+                    console.log(this.info);
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>
