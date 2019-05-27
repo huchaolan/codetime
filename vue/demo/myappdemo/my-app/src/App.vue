@@ -11,30 +11,46 @@
             </tolist>
         </ul>
     </div>
+    <div>
+        <propsdemo
+          v-bind:name1="msg"
+          v-bind:list="list"
+          v-bind:is-visible="false"
+          :type="type"
+          :onChange="handlePropChange"
+        />
+    </div>
 </div>
 </template>
-
 <script>
 import  tolist  from './components/ToList';
+import  propsdemo from './components/PropsDemo';
 
 export default {
-  name: 'app',
-  components: {
-    tolist
-  },
-  data() {
-      return {
-          msg:'hello vue',
-          info:'',
-          list:[]
-      }
-  },
-  methods: {
-      handleClick() {
-          this.list.push(this.info);
-          this.info='';
-      }
-  }
+    name: 'app',
+    components: {
+    tolist,
+    propsdemo
+    },
+    data() {
+        return {
+            msg:'hello vue',
+            info:'',
+            list:['1','2','3'],
+            helloword:'HelloWord',
+            type:'warning'
+        }
+    },
+    methods: {
+        handleClick() {
+            this.list.push(this.info);
+            this.info='';
+        },
+        handlePropChange(val) {
+           console.log("handlePropChange",val);
+           this.type=val;
+        },
+    }
 }
 </script>
 
