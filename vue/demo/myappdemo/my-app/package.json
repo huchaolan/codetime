@@ -33,7 +33,8 @@
     ],
     "rules": {
       "no-console": "off",
-      "no-debugger": "off"
+      "no-debugger": "off",
+      "no-unused-vars":["error",{"vars": "local","args": "none","ignoreRestSiblings": false}]
     },
     "parserOptions": {
       "parser": "babel-eslint"

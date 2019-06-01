@@ -13,24 +13,29 @@
     </div>
     <div>
         <propsdemo
-          v-bind:name1="msg"
-          v-bind:list="list"
-          v-bind:is-visible="false"
+          :name1="msg"
+          :list="list"
+          :is-visible="false"
           :type="type"
-          :onChange="handlePropChange"
+          v-bind:onChange="handlePropChange"
         />
+    </div>
+    <div>
+        <eventdemo :name="msg" @change="handleMsgChange"></eventdemo>
     </div>
 </div>
 </template>
 <script>
 import  tolist  from './components/ToList';
 import  propsdemo from './components/PropsDemo';
+import  eventdemo from './components/Event';
 
 export default {
     name: 'app',
     components: {
     tolist,
-    propsdemo
+    propsdemo,
+    eventdemo
     },
     data() {
         return {
@@ -50,6 +55,10 @@ export default {
            console.log("handlePropChange",val);
            this.type=val;
         },
+        handleMsgChange(val){
+            console.log('handleMsgChange',val);
+            this.msg=val;
+        }
     }
 }
 </script>

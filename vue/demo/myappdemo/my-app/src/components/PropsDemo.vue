@@ -37,6 +37,7 @@ export default {
     },
     methods:{
         handleClick() {
+            debugger;
             console.log("111",this.type);
             this.onChange(this.type==='success'?'warning':'success');
         }
