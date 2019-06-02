@@ -22,9 +22,9 @@ export default {
             console.log('input调用事件',e.target.value);
             this.$emit('change',e.target.value);//调用父组件的change事件
         },
-        handleDivClick() {//div调用事件
+        handleDivClick(e) {//div调用事件
             console.log('div调用事件');
-            //this.$emit('change',"");
+            this.$emit('change',"");
         },
         handleClick(e){//按钮调用事件
             console.log('按钮调用事件');

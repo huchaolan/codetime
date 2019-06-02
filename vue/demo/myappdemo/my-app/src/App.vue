@@ -11,6 +11,8 @@
             </tolist>
         </ul>
     </div>
+    <hr>
+    <div>属性演示</div>
     <div>
         <propsdemo
           :name1="msg"
@@ -20,8 +22,33 @@
           v-bind:onChange="handlePropChange"
         />
     </div>
+     <hr>
+    <div>事件演示</div>
     <div>
         <eventdemo :name="msg" @change="handleMsgChange"></eventdemo>
+    </div>
+    <hr>
+    <div>插槽显示2.5语法</div>
+     <div>
+        <slotdemo>
+            <p>默认插槽</p>
+            <p slot="title">命名插槽1</p>
+            <p slot="title">命名插槽2</p>
+            <p slot="item" slot-scope="props">item slot-scope {{props}}</p>
+        </slotdemo>
+    </div>
+    <div>插槽显示2.6语法</div>
+    <div>
+        <slotdemo>
+            <p style="color:green">默认插槽</p>
+            <template v-slot:title>
+                <p style="color:red">命名插槽1</p>
+                <p style="color:blue">命名插槽2</p>
+            </template>
+            <template v-slot:item="props">
+                item slot-scop{{props}}
+            </template>
+        </slotdemo>
     </div>
 </div>
 </template>
@@ -29,13 +56,15 @@
 import  tolist  from './components/ToList';
 import  propsdemo from './components/PropsDemo';
 import  eventdemo from './components/Event';
+import  slotdemo from './components/SlotDemo';
 
 export default {
     name: 'app',
     components: {
-    tolist,
-    propsdemo,
-    eventdemo
+        tolist,
+        propsdemo,
+        eventdemo,
+        slotdemo
     },
     data() {
         return {
