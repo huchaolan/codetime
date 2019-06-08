@@ -50,6 +50,26 @@
             </template>
         </slotdemo>
     </div>
+    <hr>
+    <div>
+        phoneinfo:{{phoneinfo}},zipCode:{{zipCode}}
+        <phoneinfo v-model="phoneinfo" :zipCode.sync="zipCode" />
+        <phoneinfo
+            :phoneInfo="phoneinfo"
+            :zipCode="zipCode"
+            @change="val=>(phoneinfo=val)"
+            @update:zipCode="val=>(zipCode=val)"
+        />
+    </div>
+    <hr>
+    <div>
+        <p>
+            <button @click="handleNameChange">change this.name</button>
+            <button @click="handleInfoChange">change this.info</button>
+            <button @click="handleListChange">change this.list</button>
+        </p>
+        <pd :name="pd.name" :info="pd.info" :list="pd.list" />
+    </div>
 </div>
 </template>
 <script>
@@ -57,6 +77,8 @@ import  tolist  from './components/ToList';
 import  propsdemo from './components/PropsDemo';
 import  eventdemo from './components/Event';
 import  slotdemo from './components/SlotDemo';
+import  phoneinfo from './components/PhoneInfo';
+import  pd from './components/propanddata';
 
 export default {
     name: 'app',
@@ -64,7 +86,9 @@ export default {
         tolist,
         propsdemo,
         eventdemo,
-        slotdemo
+        slotdemo,
+        phoneinfo,
+        pd
     },
     data() {
         return {
@@ -72,7 +96,19 @@ export default {
             info:'',
             list:['1','2','3'],
             helloword:'HelloWord',
-            type:'warning'
+            type:'warning',
+            phoneinfo :{
+                areaCode:'',
+                phone:''
+            },
+            zipCode:'',
+            pd:{
+                name:'',
+                info:{
+                    number:''
+                },
+                list:[]
+            }
         }
     },
     methods: {
@@ -87,6 +123,19 @@ export default {
         handleMsgChange(val){
             console.log('handleMsgChange',val);
             this.msg=val;
+        },
+        handleNameChange() {
+            this.pd.name = "vue" + Date.now();
+            console.log("this.name 发生了变化", this.name);
+        },
+        handleInfoChange() {
+            this.pd.info.number = 1;
+            // this.$set(this.info, 'number', 1)
+            console.log("this.info 发生了变化", this.info);
+        },
+        handleListChange() {
+            this.pd.list.push(1, 2, 3);
+            console.log("this.list 发生了变化", this.list);
         }
     }
 }
