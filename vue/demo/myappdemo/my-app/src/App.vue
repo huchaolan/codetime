@@ -70,6 +70,8 @@
         </p>
         <pd :name="pd.name" :info="pd.info" :list="pd.list" />
     </div>
+    <hr>
+    <computeddeme/>
 </div>
 </template>
 <script>
@@ -79,6 +81,7 @@ import  eventdemo from './components/Event';
 import  slotdemo from './components/SlotDemo';
 import  phoneinfo from './components/PhoneInfo';
 import  pd from './components/propanddata';
+import  computeddeme from './components/fullName';
 
 export default {
     name: 'app',
@@ -88,7 +91,8 @@ export default {
         eventdemo,
         slotdemo,
         phoneinfo,
-        pd
+        pd,
+        computeddeme
     },
     data() {
         return {
