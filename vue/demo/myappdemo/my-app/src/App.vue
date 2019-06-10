@@ -72,6 +72,8 @@
     </div>
     <hr>
     <computeddeme/>
+    <hr>
+    <wc/>
 </div>
 </template>
 <script>
@@ -82,6 +84,7 @@ import  slotdemo from './components/SlotDemo';
 import  phoneinfo from './components/PhoneInfo';
 import  pd from './components/propanddata';
 import  computeddeme from './components/fullName';
+import  wc from './components/watchdemo';
 
 export default {
     name: 'app',
@@ -92,7 +95,8 @@ export default {
         slotdemo,
         phoneinfo,
         pd,
-        computeddeme
+        computeddeme,
+        wc
     },
     data() {
         return {
