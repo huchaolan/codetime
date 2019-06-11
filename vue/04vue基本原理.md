@@ -140,3 +140,60 @@ forceUpdate按钮是强制页面重新渲染一次，在控制台中只有实例
 
 更加灵活，通用，watch中可以执行任何逻辑，如果函数节流，Ajax异步获取数据，甚至操作DOM
 
+```javascript
+export default {
+    name:'watchdemo',
+    data(){
+        return {
+            a:1,
+            b:2,
+            c:{
+                d:3
+            },
+            e:{
+                f:{
+                    g:4
+                }
+            },
+            h:[]
+        }
+    },
+    watch:{
+        a:function(val,oldval) {
+            console.log('a','val:'+val+'|oldval:'+oldval);
+            this.b += 1;
+        },
+        'b':function(val,oldval){
+            console.log('b','val:'+val+'|oldval:'+oldval);
+             this.c.d += 2;
+        },
+        'c.d':function(val,oldval) {
+            console.log('c.d','val:'+val+'|oldval:'+oldval);
+            this.e.f.g += 3;
+        },
+        e: {
+            handler:function(val,oldval) {
+                console.log('e','val:'+val+'|oldval:'+oldval);
+                this.h.push('\u12345');
+            },
+            deep:true
+        },
+        h(val,oldval) {
+            console.log('h','val:'+val+'|oldval:'+oldval);
+        }
+    },
+    methods:{
+        changea:function(){
+            this.a+=1;
+        }
+    }
+}
+```
+
+侦听器可以直接将监听嵌套属性,deep属性表示对属性的嵌套属性进行监听。
+
++ 监听属性变量(a)
++ 监听属性名称('b')
++ 监听嵌套属性的名称('c.d')
++ 监听配置对象(e),handler属性触发监听，deep属性表示对的所有嵌套属性进行监听`e.f.g`属性变化就会触发handler执行
++ immediate属性该回调将会在侦听开始之后被立即调用
