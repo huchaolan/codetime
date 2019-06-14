@@ -197,3 +197,30 @@ export default {
 + 监听嵌套属性的名称('c.d')
 + 监听配置对象(e),handler属性触发监听，deep属性表示对的所有嵌套属性进行监听`e.f.g`属性变化就会触发handler执行
 + immediate属性该回调将会在侦听开始之后被立即调用
+
+## 生命周期的应用场景
+
+### 创建阶段
+
+![lccreatephase.PNG](./imgs/lccreatephase.PNG)
+
++ `beforeCreate`之前会初始化事件和生命周期
++ `beforeCreate`到`created`之间数据观测,属性,侦听器配置等
++ `created`到`beforeMount`之间模板编译到render
++ `mounted`异步请求，操作DOM，定时器等
+
+### 更新阶段
+
+![lcupdatephase.PNG](./imgs/lcupdatephase.PNG)
+
+更新阶段是一个多次执行的阶段
+
++ `beforeUpdate`由依赖数据改变时候或$forceUpdate强制刷新时候
++ `beforeUpdate`阶段发生移除已经添加的事件监听器等**万万不可更改依赖数据**
++ `updated`操作DOM添加事件监听器等**万万不可更改依赖数据**
+
+### 销毁阶段
+
+![destoryphase.PNG](./imgs/destoryphase.PNG)
+
++ `beforeDestory`移除已经添加的事件监听器，计时器等
