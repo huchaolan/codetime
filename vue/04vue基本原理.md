@@ -224,3 +224,6 @@ export default {
 ![destoryphase.PNG](./imgs/destoryphase.PNG)
 
 + `beforeDestory`移除已经添加的事件监听器，计时器等
+
+## 函数式组件
+

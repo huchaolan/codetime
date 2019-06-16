@@ -74,6 +74,19 @@
     <computeddeme/>
     <hr>
     <wc/>
+    <hr>
+    <clock/>
+    <hr>
+    <tempvar
+        :var1="`临时变量1`"
+        :var2="`临时变量2`"
+    >
+        <template v-slot="{var1,var2}">
+            {{var1}}
+            {{var2}}
+            <clock/>
+        </template>
+    </tempvar>
 </div>
 </template>
 <script>
@@ -85,6 +98,8 @@ import  phoneinfo from './components/PhoneInfo';
 import  pd from './components/propanddata';
 import  computeddeme from './components/fullName';
 import  wc from './components/watchdemo';
+import clock from './components/timer';
+import tempvar from './components/TempVar'
 
 export default {
     name: 'app',
@@ -96,7 +111,9 @@ export default {
         phoneinfo,
         pd,
         computeddeme,
-        wc
+        wc,
+        clock,
+        tempvar
     },
     data() {
         return {
