@@ -87,6 +87,8 @@
             <clock/>
         </template>
     </tempvar>
+    <hr>
+    <directdemo/>
 </div>
 </template>
 <script>
@@ -100,6 +102,7 @@ import  computeddeme from './components/fullName';
 import  wc from './components/watchdemo';
 import clock from './components/timer';
 import tempvar from './components/TempVar'
+import directdemo from './components/direct'
 
 export default {
     name: 'app',
@@ -113,7 +116,8 @@ export default {
         computeddeme,
         wc,
         clock,
-        tempvar
+        tempvar,
+        directdemo
     },
     data() {
         return {

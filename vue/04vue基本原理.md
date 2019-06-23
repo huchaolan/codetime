@@ -227,3 +227,50 @@ export default {
 
 ## 函数式组件
 
+在声明中将functional:true就是函数式组件了，它没有状态，没有实例，没有this上下文，没有生命周期
+
+例子：
+利用函数式在模板中生成临时变量
+
+```java
+export default {
+    functional: true,
+    render:(h,ctx) => {
+        console.log('ctx',ctx)
+        return ctx.scopedSlots.default && ctx.scopedSlots.default(ctx.props||{});
+    }
+}
+```
+
+```html
+<tempvar
+    :var1="`临时变量1`"
+    :var2="`临时变量2`"
+>
+    <template v-slot="{var1,var2}">
+        {{var1}}
+        {{var2}}
+    </template>
+</tempvar>
+```
+
+tempvar组件传入var1和var2，那么在template可以直接使用
+
+## 指令
+
+|指令|作用|
+|-|-|
+|v-text|将元素的内容替换掉,注意:会先清空之前的所有内容|
+|v-html|显示包含html代码|
+|v-show|是否隐藏元素，样式加display:none|
+|v-if|满足条件为真就渲染元素|
+|v-else-if|满足条件为真就渲染元素|
+|v-else|如果v-if和v-else-if不满足条件就渲染元素|
+|v-for|根据数据循环渲染对象,可以遍历数组和对象|
+|v-bind|动态绑定对象到属性中|
+|v-on|声明事件回调|
+|v-model|双向绑定|
+|v-slot||
+|v-pre||
+|v-cloak||
+|v-once||
