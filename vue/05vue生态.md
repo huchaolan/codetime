@@ -19,3 +19,52 @@ vuex已经和组件没有强相关的内容了,可以独立的提供相应式数
 3. 在Action中可以做一些异步的操作(Ajax获取后端数据)
 4. 通过Commit形式提交给mutation
 5. 由mutation最终更改state,提交记录有devtool记录更改
+
+## 安装Vuex
+
+1. `npm install vuex`就可以为项目安装vuex
+2. 在vue中使用vuex
+
+```javascript
+import Vue from 'vue'
+import Vuex from 'vuex'//导入vuex
+import App from './App.vue'
+
+Vue.use(Vuex)
+//新建Vuex的Store实例
+const store = new Vuex.Store({
+  state:{
+    count:0
+  },
+  mutations:{
+    increase(state,val){
+      state.count= state.count+val;
+    }
+  },
+  actions:{
+    increase({commit}) {
+      setTimeout(()=>{
+        commit('increase',2)
+      },3000);
+    }
+  },
+  getters:{
+    increaseDouble(state) {
+      return state.count*2;
+    }
+  }
+})
+
+new Vue({
+  store,//挂载到Vue中
+  render: h => h(App),
+}).$mount('#app')
+```
+
+|属性|介绍|
+|--|--|
+|state|提供响应的数据|
+|mutations|提供更改相应数据的方法|
+|actions|触发mutations方法|
+|getters|使用vue的计算属性来缓存属性|
+
