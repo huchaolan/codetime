@@ -274,3 +274,18 @@ tempvar组件传入var1和var2，那么在template可以直接使用
 |v-pre|直接显示内容，跳过编译|
 |v-cloak|这个指令保持在元素上直到关联实例结束编译，需要CSS 规则如 [v-cloak] { display: none } 一起用|
 |v-once|只渲染元素和组件一次。随后的重新渲染，元素/组件及其所有的子节点将被视为静态内容并跳过。这可以用于优化更新性能|
+
+## provide/inject
+
+## 如何优雅获取跨层级组件实例
+
+在业务简单的情况下只要关注数据即可，但是在复杂的场景中难免要访问组件实例的
+Vue提供了ref属性使用
+
+```html
+<p ref="p">hello</p>
+this.$ref.p就可以访问
+
+<child-comp ref="child"></child-comp>
+this.$ref.child访问
+```

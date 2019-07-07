@@ -1,23 +1,30 @@
 <template>
   <div id="app">
-    count:{{count}}
-    <br />
-    increaseDouble:{{$store.getters.increaseDouble}}
-    <button @click="$store.dispatch('increase')">count++</button>
-
+    <h1></h1>
+    <p>账号:{{email}}</p>
+    <hr>
+    <h2>产品</h2>
+    <prodcutlist/>
+    <shoppcart/>
   </div>
 </template>
-
 <script>
-
-
+import {mapState} from 'vuex'
+import prodcutlist from './components/ProductList'
+import shoppcart from './components/ShoppingCart'
 export default {
   name: 'app',
-  computed:{
-    count() {
-      return this.$store.state.count;
+  components:{
+    prodcutlist,
+    shoppcart
+  },
+  data(){
+    return {
     }
-  }
+  },
+  computed: mapState({
+    email:state=>state.userInfo.email
+  })
 }
 </script>
 

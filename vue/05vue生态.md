@@ -59,12 +59,41 @@ new Vue({
   store,//挂载到Vue中
   render: h => h(App),
 }).$mount('#app')
+
+```
+
+```html
+<template>
+  <div id="app">
+    count:{{count}}
+    <br />
+    increaseDouble:{{$store.getters.increaseDouble}}
+    <button @click="$store.dispatch('increase')">count++</button>
+
+  </div>
+</template>
+
+<script>
+
+
+export default {
+  name: 'app',
+  computed:{
+    count() {
+      return this.$store.state.count;
+    }
+  }
+}
 ```
 
 |属性|介绍|
 |--|--|
 |state|提供响应的数据|
 |mutations|提供更改相应数据的方法|
-|actions|触发mutations方法|
+|actions|触发mutations方法,注意参数的写法|
 |getters|使用vue的计算属性来缓存属性|
+
+## VueRouter
+
+监听url的变化执行对应的逻辑
 
