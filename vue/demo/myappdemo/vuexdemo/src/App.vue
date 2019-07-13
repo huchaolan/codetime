@@ -18,13 +18,12 @@ export default {
     prodcutlist,
     shoppcart
   },
-  data(){
-    return {
-    }
-  },
   computed: mapState({
     email:state=>state.userInfo.email
-  })
+  }),
+  methods:{
+
+  }
 }
 </script>
 
