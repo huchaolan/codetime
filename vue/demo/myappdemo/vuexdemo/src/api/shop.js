@@ -11,7 +11,7 @@ export default {
      * @param {function} cb
      */
     getProducts(cb) {
-        setTimeout(()=>cb(_products),100)
+        setTimeout(()=>cb(_prodcuts),100)
     },
 
     /**

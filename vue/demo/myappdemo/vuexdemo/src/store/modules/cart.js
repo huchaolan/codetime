@@ -11,8 +11,9 @@ const getters = {
      * 获取购物车的信息
      */
     cartProducts:(state,getters,rootState)=> {
+        debugger;
         return state.items.map(({id,quantity})=>{
-            const product = rootState.product.all.find(product=> product.id==id)
+            const product = rootState.products.all.find(product=> product.id==id)
             return {
                 title:product.title,
                 price:product.price,
@@ -47,7 +48,8 @@ const actions = {
             }
         )
     },
-    addProductToCart ({state,commit},prduct) {
+    addProductToCart ({state,commit},product) {
+        debugger;
         commit(CART.SET_CHECKOUT_STATUS,null);
         if(product.inventory>0){
             const cartItem = state.items.find(item=>item.id===product.id);
