@@ -15,9 +15,11 @@ import {mapState,mapActions} from 'vuex'
 
 export default {
     name:'prodcutlist',
-    computed: mapState({
-        products:state=>state.products.all,
-    }),
+    computed:{
+        ...mapState({
+            products:state=>state.products.all,
+        }),
+    },
     created(){
         this.$store.dispatch('products/getAllProducts')
     },

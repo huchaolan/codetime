@@ -57,7 +57,8 @@ const actions = {
             }else {
                 commit(CART.INCREMENT_ITEM_QUANTITY,cartItem);
             }
-            //库存移除
+            //库存移除,这里调用其它模块的action，需要用这种形式
+            //`moudelname/${actions}`,data,root:true
             commit(`products/${PRODUCTS.DECREMENT_PRODUCT_INVENTORY}`,{id:product.id},{root:true});
         }
     }
