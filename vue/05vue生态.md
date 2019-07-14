@@ -86,12 +86,39 @@ export default {
 }
 ```
 
-|属性|介绍|
-|--|--|
-|state|提供响应的数据|
-|mutations|提供更改相应数据的方法|
-|actions|触发mutations方法,注意参数的写法|
-|getters|使用vue的计算属性来缓存属性|
+|属性|介绍|API|Vuex简写|
+|--|--|--|--|
+|state|提供响应的数据|this.$store.state.xxx|mapState取值|
+|mutations|提供更改相应数据的方法|this.$store.commit('xxx')|mapMutations赋值|
+|actions|触发mutations方法,注意参数的写法|this$store.dispatch('xxx')|mapMutations赋值|
+|getters|使用vue的计算属性来缓存属性|this.$store.getters.xxx|mapGetters取值|
+
+### 最佳实践
+
+1. 将mutations的类型换成常量,就可以放到单独的文件中。
+
+```javascript
+//保存到单独的文件中
+export const SOME_MUTATION='SOME_MUTATION'
+
+//在其他文件引入
+import {SOME_MUTATION} from './somemuationtypes'
+
+const store = new Vuex.Store({
+  state:{...}
+  mutations:{
+    //ES2015风格计算属性命名功能来使用一个常量作为函数名
+    [SOME_MUTATION](state){
+      //一些操作
+    }
+  }
+
+});
+```
+
+2. 开启命名空间 namespace:true
+3. 嵌套模块不要过深，尽量扁平化
+4. 灵活应用`createNamespacedHelpers`
 
 ## VueRouter
 

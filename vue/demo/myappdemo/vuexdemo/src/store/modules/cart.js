@@ -11,7 +11,6 @@ const getters = {
      * 获取购物车的信息
      */
     cartProducts:(state,getters,rootState)=> {
-        debugger;
         return state.items.map(({id,quantity})=>{
             const product = rootState.products.all.find(product=> product.id==id)
             return {

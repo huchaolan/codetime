@@ -9,6 +9,10 @@ const getters = {
 }
 
 const actions = {
+    /**
+     * 获取所有产品信息，相当于ajax请求
+     * @param {object} commit
+     */
     getAllProducts({commit}) {
         shop.getProducts(products=>{
             commit(PRODUCTS.SET_PRODUCTS,products)

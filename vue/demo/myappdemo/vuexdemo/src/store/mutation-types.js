@@ -23,6 +23,12 @@ export const CART = {
  * 产品的Action
  */
 export const PRODUCTS = {
+    /**
+     *设置所有产品的信息
+     */
     SET_PRODUCTS: 'setProducts',
+    /**
+     * 减库存
+     */
     DECREMENT_PRODUCT_INVENTORY:'decrementProductInventory'
 }
