@@ -122,5 +122,14 @@ const store = new Vuex.Store({
 
 ## VueRouter
 
-监听url的变化执行对应的逻辑
++ 监听url的变化执行对应的逻辑
++ 不同的URL对应不同的组件
++ 提供多种方式URL的API(URL的改变不能导致浏览器刷新)
+
+### 使用方式
+
++ 提供一个路由配置表，不同URL对应不同组件的配置
++ 初始化路由实例new VueRouter()
++ 挂载到Vue实例上
++ 提供一个路由占位，用来挂在URL匹配到的组件
 
