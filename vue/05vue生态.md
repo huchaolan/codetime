@@ -133,3 +133,49 @@ const store = new Vuex.Store({
 + 挂载到Vue实例上
 + 提供一个路由占位，用来挂在URL匹配到的组件
 
+```javascript
+//导入vue-router
+import VueRouter from 'vue-router'
+//安装插件
+Vue.use(VueRouter)
+//创建router实例
+const router = new VueRouter({
+  mode:'hash',
+  routes//路由配置
+})
+//添加到Vue中
+new Vue({
+  router,
+  render: h => h(App),
+}).$mount('#app')
+
+在App.vue中使用<router-view></router-view>
+
+```
+
+routes是一个路由配置，是一个routes.js文件
+
+```javascript
+
+import RouterDemo from './components/RouterDemo'
+import RouterChildrenDemo from './components/RouterChildrenDemo'
+const routes = [
+    {path:'/foo',component:RouterDemo,name:'1'},
+    {   path: '/user/:id',
+        component: RouterDemo,
+        name: '3',
+        props: true,
+        children: [ {
+            path: 'profile',
+            component: RouterChildrenDemo,
+            name: '3-1' },
+        ]
+    }
+]
+export default routes
+```
+
+name1:当访问/foo，组件RouterDemo就会渲染到App.vue的`<router-view>`位置中
+name3:当访问/user/123,这里是一个嵌套视图，RouterDemo会渲染到App.vue的占位符中
+RouterChildrenDemo会渲染到RouterDemo占位符中
+props 属性为true表示将123传递到RouterDemo组件中。
