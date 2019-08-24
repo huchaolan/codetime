@@ -58,3 +58,31 @@ git init projectname 会创建同名的文件夹
 `git log --oneline -all` 查看所有分支提交日志
 `git log --all --graph` 图形化log日志
 `git log --all --oneline -n4` 显示前4条日志
+
+### .git目录
+
+使用git init命令后会在当前目录创建.git目录
+
+HEAD文件是记录当前工作分支
+`ref:refs/heads/master
+config文件记录local的配置，比如用户名和邮箱
+refs目录 保存了分支的信息，每个文件对应一个分支，文件内容记录分支最后提交信息
+objects目录 
+
+查看git提交信息
+`git cat-file -t hashid` 查看最后提交的类型
+
+```
+git cat-file -t cd0f6b734951779ee00b923a31b28a7b2586cdc6
+commit
+```
+
+### 不同人修改了同文件的不同区域如何处理
+
+基于远端分支检出新本地分支
+`git checkout -b feature/new_command origin/feature/new_command`
+
+删除本地分支
+`git branch -d <BranchName>`
+
+feature/new_command 3265558 [ahead 1, behind 1] ddtest1.log
