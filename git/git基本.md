@@ -67,12 +67,12 @@ HEAD文件是记录当前工作分支
 `ref:refs/heads/master
 config文件记录local的配置，比如用户名和邮箱
 refs目录 保存了分支的信息，每个文件对应一个分支，文件内容记录分支最后提交信息
-objects目录 
+objects目录
 
 查看git提交信息
 `git cat-file -t hashid` 查看最后提交的类型
 
-```
+```cmd
 git cat-file -t cd0f6b734951779ee00b923a31b28a7b2586cdc6
 commit
 ```
