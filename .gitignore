@@ -44,3 +44,4 @@ Temporary Items
 vue/demo/myappdemo/my-app/node_modules/*
 vue/demo/myappdemo/vuexdemo/node_modules/*
 vue/demo/myappdemo/vuerouterdemo/node_modules/*
+nodejs/express/myapp/node_modules/*
