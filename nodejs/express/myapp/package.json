@@ -9,6 +9,7 @@
   "author": "huchaolan",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-generator": "^4.16.1"
   }
 }
