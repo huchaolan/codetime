@@ -31,4 +31,39 @@ Tomcat实现了Servlet容器并自带了HTTP服务器。虽然它没有实现完
   + Java Web 开发基础
     学习一些通用的设计原则和设计模式
     学习 Servlet 和 Servlet 容器
-    
+
+## HTTP协议必知必会
+
+### HTTP请求过程
+
+![requestHTTPflow.jpg](./imgs/requestHTTPflow.jpg)
+
+1. 用户在浏览器地址栏中输入http地址
+2. 浏览器和服务器端进行3次握手后，成功连接到服务器端口
+3. 浏览器通过http地址，发起请求服务器http服务
+4. 服务器接收到http请求地址后，解析地址
+5. 读取请求内容生成HTTP请求对应的答复内容
+6. 将答复内容返回浏览器
+7. 浏览器将答复内容显示到页面上
+
+### HTTP格式
+
++ HTTP请求格式
+![http01.png](./imgs/http01.png)
+
++ HTTP响应格式
+![http02.png](./imgs/http02.png)
+
+### Cookie和Session
+
+HTTP协议有个特点是无状态，请求与请求之间是没有关系。因此 HTTP 协议需要一种技术让请求与请求之间建立起联系，并且服务器需要知道这个请求来自哪个用户
+
++ Cookie技术
+  Cookie是HTTP 报文的一个请求头，Web 应用可以将用户的标识信息或者其他一些信息（用户名等）存储在Cookie中。
+  用户经过验证之后，每次HTTP请求报文中都包含Cookie，这样服务器读取这个Cookie请求头就知道用户是谁了。Cookie本质上就是一份存储在用户本地的文件，里面包含了每次请求中都需要传递的信息
+
++ Session技术
+
+  Session可以理解为服务器端开辟的存储空间，里面保存了用户的状态，用户信息以 Session 的形式存储在服务端。当用户请求到来时，服务端可以把用户的请求和用户的Session对应起来。
+
+  服务器在创建Session的同时，会为该 Session 生成唯一的Session ID，当浏览器再次发送请求的时候，会将这个 Session ID带上，服务器接受到请求之后就会依据 Session ID找到相应的Session，找到 Session后，就可以在Session中获取或者添加内容了。而这些内容只会保存在服务器中，发到客户端的只有Session ID，这样相对安全，也节省了网络流量，因为不需要在 Cookie中存储大量用户信息
