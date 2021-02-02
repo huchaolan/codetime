@@ -75,7 +75,7 @@ Tomcat设计了一系列抽象基类来封装这些稳定的部分,抽象基类A
 ![flow1.jpg](./imgs/flow1.jpg)
 
 + EndPoint
-通信端点，即通信监听的接口，是具体的 Socket接收和发送处理器，是对传输层的抽象，因此Endpoint是用来实现TCP/IP协议的,Tomcat9找不到这个接口了，有个抽象类替代AbstractEndpoint。实现类是NioEndpoint和Nio2Endpoint，在它们中有两个重要的子组件：Acceptor 和 SocketProcessor。
+通信端点，即通信监听的接口，是具体的 Socket接收和发送处理器，是对传输层的抽象，因此Endpoint是用来实现TCP/IP协议的,这个接口目前找不到，有个抽象类替代AbstractEndpoint。实现类是NioEndpoint和Nio2Endpoint，在它们中有两个重要的子组件：Acceptor 和SocketProcessor。
 `protected Acceptor<U> acceptor;`
 `protected SynchronizedStack<SocketProcessorBase<S>> processorCache`
   + Acceptor用于监听Socket连接请求。
