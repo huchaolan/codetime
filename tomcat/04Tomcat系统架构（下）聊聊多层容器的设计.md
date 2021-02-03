@@ -76,7 +76,7 @@ public interface Pipeline extends Contained {
 ![piplinelink](./imgs/piplinelink.jpg)
 Wrapper容器的最后一个Valve会创建一个Filter链，并调用doFilter方法，最终会调到Servlet的service方法。
 
-+ Valve 和 Filter 有什么区别吗?
++ Valve和Filter有什么区别吗?
   + Valve是Tomcat的私有处理过程，与Tomcat的基础架构紧耦合的。Servlet API是公有的标准，所有的Web容器包括 Jetty都支持Filter机制
   + Valve工作在Web容器级别，拦截所有应用的请求，Servlet Filter工作在应用级别，只能拦截某个Web应用的所有请求
 
