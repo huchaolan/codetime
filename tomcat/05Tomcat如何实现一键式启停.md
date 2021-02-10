@@ -52,4 +52,4 @@ LifecycleBase实现了 Lifecycle 接口中所有的方法，还定义了相应�
 
 ### 课后思考
 
-从文中最后的类图上你会看到所有的容器组件都扩展了 ContainerBase，跟 LifecycleBase 一样，ContainerBase 也是一个骨架抽象类，请你思考一下，各容器组件有哪些“共同的逻辑”需要 ContainerBase 由来实现呢？
+从文中最后的类图上你会看到所有的容器组件都扩展了ContainerBase，跟LifecycleBase一样，ContainerBase也是一个骨架抽象类，请你思考一下，各容器组件有哪些“共同的逻辑”需要ContainerBase由来实现呢？
