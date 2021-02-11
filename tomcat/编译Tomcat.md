@@ -27,7 +27,7 @@
     具体原因是properties资源文件编码用utf-8，读取用ascii码读取导致读取出来的值都是乱码，下面是需要修改的方法
 
     ```java
-    org.apache.tomcat.util.res.StringManager#getString(java.lang.String, java.lang.Object...)
+    org.apache.tomcat.util.res.StringManager#getString(java.lang.String)
     org.apache.jasper.compiler.Localizer#getMessage(java.lang.String)
     ```
 
